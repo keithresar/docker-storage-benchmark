@@ -7,10 +7,10 @@ import time
 #from functools import lru_cache
 
 
-#NUM_RUNS_PER_TEST = 5
-#NUM_INSTANCES = (1, 5, 10, 50, 100)
-NUM_RUNS_PER_TEST = 1
-NUM_INSTANCES = (1, )
+NUM_RUNS_PER_TEST = 5
+NUM_INSTANCES = (1, 5, 10, 50, 100)
+#NUM_RUNS_PER_TEST = 1
+#NUM_INSTANCES = (1, )
 #STORAGE_DRIVERS = ('devicemapper', 'overlay', 'overlay2', 'btrfs', 'no-docker-ext4')
 STORAGE_DRIVERS = ('devicemapper', 'overlay', 'overlay2', 'btrfs')
 

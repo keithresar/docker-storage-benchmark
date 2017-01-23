@@ -24,6 +24,15 @@ if [ ! -d tree-of-files ]; then
 fi
 
 time docker build -t benchmark .
+
+
+# devicemapper loop
+systemctl stop docker || true
+systemctl start docker
 time ./test.py
+
+# devicemapper direct
+
+# btrfs
 
 exec $0
