@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 import os
 import sys
 
@@ -9,8 +9,9 @@ from matplotlib.backends.backend_agg import FigureCanvasAgg
 from matplotlib.figure import Figure
 
 from test import NUM_INSTANCES
-from test import STORAGE_DRIVERS
+#from test import STORAGE_DRIVERS
 from test import all_tests
+STORAGE_DRIVERS = ('devicemapper-loop', 'devicemapper-direct', 'overlay', 'overlay2', 'btrfs',)
 
 
 def all_test_types():
@@ -39,7 +40,7 @@ def main(argv=None):
         x = np.array([float(i)*(len(STORAGE_DRIVERS)+1) for i in range(len(NUM_INSTANCES))])
         bars = []
 
-        for driver, color in zip(STORAGE_DRIVERS, 'mbcg'):
+        for driver, color in zip(STORAGE_DRIVERS, 'mbcgy'):
             means = []
             for num_instances in NUM_INSTANCES:
                 means.append(average_from_file(os.path.join(
@@ -51,7 +52,7 @@ def main(argv=None):
             x += width
 
         ax.set_title(test)
-        ax.set_xlabel('num parallel processes' + ' ' * 90)  # lol
+        #ax.set_xlabel('num parallel processes' + ' ' * 90)  # lol
         ax.set_ylabel('seconds for completion')
         ax.set_xticklabels(NUM_INSTANCES)
         ax.set_xticks(x - 1.5)
@@ -62,7 +63,7 @@ def main(argv=None):
                 bbox_to_anchor=(1, -0.1),
               fancybox=True, shadow=True, ncol=5)
 
-        fig.savefig(os.path.join('graphs', test + '.png'))
+        fig.savefig(os.path.join('graphs', test + '.png'), transparent=True)
 
 
 if __name__ == '__main__':
